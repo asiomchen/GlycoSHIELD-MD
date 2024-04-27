@@ -37,3 +37,5 @@ MANIFEST
 .unison/
 .vscode/
 
+venv/
+*offsets.npz

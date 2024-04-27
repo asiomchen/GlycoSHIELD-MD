@@ -1,0 +1,18 @@
+name: glycoshield
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.11,<3.12
+  - pip>=21.3
+  - numpy
+  - scipy
+  - matplotlib
+  - mdanalysis
+  - streamlit
+  - nglview
+  - py3Dmol==2.0.0.post2
+  - ipywidgets==7.6.3
+  - ipython_genutils
+  - pip:
+    - st-click-detector
+    - stmol
