@@ -2,6 +2,6 @@ services:
   web:
     build: .
     container_name: glycoshield-web
-    command: streamlit run  --server.headless true --browser.gatherUsageStats false --browser.serverAddress "127.0.0.1" Welcome.py
+    command: streamlit run --server.headless true --browser.gatherUsageStats false --browser.serverAddress "127.0.0.1" Welcome.py
     ports:
-      - "8000:8501"
+      - "8501:8501"
