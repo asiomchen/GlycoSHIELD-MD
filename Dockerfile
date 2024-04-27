@@ -1,10 +1,11 @@
 FROM mambaorg/micromamba:1.5.8-jammy as base
 
-ARG GMX_VERSION=2023.4
-
 USER root
 
 RUN apt-get update && apt-get install -y wget gcc g++ make cmake
+
+ARG GMX_VERSION=2021.7
+ARG BUILD_JOBS=8
 
 RUN wget https://ftp.gromacs.org/gromacs/gromacs-$GMX_VERSION.tar.gz  -O /tmp/gromacs-$GMX_VERSION.tar.gz
 
@@ -12,8 +13,8 @@ RUN tar -xzf /tmp/gromacs-$GMX_VERSION.tar.gz -C /tmp && \
     cd /tmp/gromacs-$GMX_VERSION && \
     mkdir build && cd build && \
     cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_MPI=OFF && \
-    make -j 4 && make install && \
-    cd /tmp && rm -rf gromacs-$GMX_VERSION
+    make -j $BUILD_JOBS && make install && \
+    cd /tmp && rm -rf gromacs-$GMX_VERSION.*
 
 
 
