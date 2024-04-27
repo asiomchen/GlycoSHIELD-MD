@@ -93,3 +93,48 @@ sible in the absence of the glycans, and 0 if a given site is not accessible at 
 can be then displayed e.g. in VMD:
 
 <img src="TUTORIAL/IMG/tut3.svg.png" width="500">
+
+## Running your own GlycoSHIELD web app
+
+### From source
+
+To run the GlycoSHIELD web app from source, you need create a conda environment with the necessary dependencies. You can do this by running:
+
+```bash
+conda env create --file=environment-app.yaml
+conda activate glycoshield
+conda install -c conda-forge gromacs
+```
+
+Then install the GlycoSHIELD package by running:
+
+```bash
+pip install .
+```
+
+After that you can run the app by running:
+
+
+```bash
+./run_streamlit.sh
+```
+
+Which will start the app on `localhost:8501`.
+
+### From Docker (recommended)
+
+If you have Docker installed, you can run the GlycoSHIELD web app using the provided Docker image, this image is based on micromamba image and contains all the necessary dependencies (including gromacs 2021.7 build from source)
+
+To run the app use docker-compose:
+
+```bash
+docker compose up -d
+```
+
+This will build the image and start the app on `localhost:8501`.
+
+In order to stop the app, run:
+
+```bash
+docker compose down
+```
